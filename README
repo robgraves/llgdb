@@ -1,0 +1,26 @@
+Matthew Page
+03/29/2018
+
+LLGDB - Linked List Games Database Project 
+
+The idea here is to create a database of board games
+that I own with certain pieces of information
+on each game within its own "game" struct such as
+number of players or a range of players, say 1 to 4 
+players included in the struct.  Additionally I will
+definitely include a string or character array
+including the name of the game.   The end goal being
+that I can run the program and search for a random 
+game for say 2 players and it will eliminate any
+game that doesn't meet that criteria and randomly 
+select one based on the pared down list. I'm using 
+linked lists solely to exercise my ability to use them
+so it will contain at least one but probably 2 pointers
+in each struct and will utilize multiple list as needed.
+When the program closes I plan to have it dump the database
+into a file or files so as to not need to rebuild the database 
+each time the program is run, then read fromt he files if 
+available upon start of the program.  Additionally as a bonus
+I would like to at the end add an ncurses quasi graphical
+menu to the program once the base funcionality is 
+written.
