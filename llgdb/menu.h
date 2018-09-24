@@ -1,31 +1,9 @@
-//////////////////////////////////////////////////
-//
-// Board Game DataBase
-//
-// bgdb.c - a program to organize and randomize
-//          board game for selection by using
-//          certain crieria, build on a linked
-//          list.
-//
-/////////////////////////////////////////////////
 
-#include<stdio.h>
 #include<stdlib.h>
-//#include<game.h>
-//#include<list.h>
-#include "menu.h"
+#include<stdio.h>
 
-void menu();
+//void menu();
 
-int main()
-{
-    menu();
-
-    return 0;
-}
-
-//menu definition
-/*
 void menu()
 {
     int input   =   0;
@@ -46,6 +24,5 @@ void menu()
 
     printf("Thank you for using Matt's Board Game Database!\n");
 
-    return 0;
+    //return 0;
 }
-*/
