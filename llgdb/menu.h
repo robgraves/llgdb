@@ -32,9 +32,11 @@ void menu()
             printf("This is inside the edit menu!\n");
             scanf("%d", &junk);
             break;
+            case 3:
             //search();
             printf("This is inside the search menu!\n");
-            scanf("%d", %junk);
+            scanf("%d", &junk);
+            break;
         }        
     }
 
