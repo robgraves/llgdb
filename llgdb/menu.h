@@ -6,14 +6,15 @@ void menu()
     int input   =   0;
     int junk    =   0;
 
-    while (input != 3)
+    while (input != 4)
     {
         system("clear");
         printf("*******MATT'S BOARD GAME DATABASE*******\n");
         printf("Please choose from the following options: \n");
         printf("1 - Randomizer\n");
         printf("2 - Edit Board Game Database\n");
-        printf("3 - Quit\n");
+        printf("3 - Search Board Game Database\n");
+        printf("4 - Quit\n");
 
         scanf("%d", &input);
 
@@ -28,9 +29,12 @@ void menu()
             break;
             case 2:
             //editmenu();
-            printf("This is inside the edit menu");
+            printf("This is inside the edit menu!\n");
             scanf("%d", &junk);
             break;
+            //search();
+            printf("This is inside the search menu!\n");
+            scanf("%d", %junk);
         }        
     }
 
