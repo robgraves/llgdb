@@ -1,6 +1,5 @@
 
-#include<stdlib.h>
-#include<stdio.h>
+#include "header.h"
 
 void menu()
 {
@@ -10,7 +9,7 @@ void menu()
     while (input != 3)
     {
         system("clear");
-        printf("MATT'S BOARD GAME DATABASE\n");
+        printf("*******MATT'S BOARD GAME DATABASE*******\n");
         printf("Please choose from the following options: \n");
         printf("1 - Randomizer\n");
         printf("2 - Edit Board Game Database\n");

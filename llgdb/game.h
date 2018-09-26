@@ -1,7 +1,7 @@
 #ifndef _GAME_H
 #define _GAME_H
 
-#include <stdlib.h>
+#include "header.h"
 
 int range_length = 0;
 
