@@ -1,5 +1,5 @@
 #OBJS specifies which files to compile as part of the project 
-OBJS = bgdb.c header.h menu.h editmenu.h
+OBJS = bgdb.c src/header.h src/menu.h src/editmenu.h
 
 #CC specifies which compiler we're using 
 CC = gcc 

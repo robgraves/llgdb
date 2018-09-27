@@ -9,10 +9,10 @@
 //
 /////////////////////////////////////////////////
 
-#include "header.h"
-#include "menu.h"
-//#include<game.h>
-//#include<list.h>
+#include "src/header.h"
+#include "src/menu.h"
+//#include<src/game.h>
+//#include<src/list.h>
 
 void menu();
 
