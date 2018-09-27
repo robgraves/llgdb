@@ -4,16 +4,15 @@
 //
 // bgdb.c - a program to organize and randomize
 //          board game for selection by using
-//          certain crieria, build on a linked
+//          certain crieria, built on a linked
 //          list.
 //
 /////////////////////////////////////////////////
 
-#include<stdio.h>
-#include<stdlib.h>
+#include "header.h"
+#include "menu.h"
 //#include<game.h>
 //#include<list.h>
-#include "menu.h"
 
 void menu();
 

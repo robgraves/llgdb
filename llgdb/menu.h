@@ -1,5 +1,6 @@
 
 #include "header.h"
+#include "editmenu.h"
 
 void menu()
 {
@@ -28,7 +29,7 @@ void menu()
             scanf("%d", &junk);
             break;
             case 2:
-            //editmenu();
+            input = editmenu(input);
             printf("This is inside the edit menu!\n");
             scanf("%d", &junk);
             break;
