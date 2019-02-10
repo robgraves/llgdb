@@ -1,0 +1,12 @@
+LibraryModule DEFINITIONS AUTOMATIC TAGS ::= 
+BEGIN
+	BoardGame ::= SEQUENCE       
+	{
+		id			INTEGER,                      
+     	name      	VisibleString (SIZE(60)),
+     	description VisibleString(SIZE(60)), 
+		min-players	INTEGER,
+		max-players	INTEGER     
+  	}                                                     
+END
+

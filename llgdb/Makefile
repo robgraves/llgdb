@@ -1,19 +1,35 @@
-#OBJS specifies which files to compile as part of the project 
-OBJS = bgdb.c src/header.h src/menu.h src/editmenu.h
+C_FLAGS = -Werror -Wall
 
-#CC specifies which compiler we're using 
-CC = gcc 
+bgdb:
+	gcc $(C_FLAGS) src/bgdb.c -I lib/ -o bin/bgdb
 
-#COMPILER_FLAGS specifies the additional compilation options we're using 
-# -w suppresses all warnings 
-COMPILER_FLAGS = -w 
+xer_encoder.o :
+	gcc $(C_FLAGS) -c src/asn1/xer_encoder.c -I lib/asn1 -o obj/xer_encoder.o
 
-#LINKER_FLAGS specifies the libraries we're linking against 
-LINKER_FLAGS = 
+xer_decoder.o :
+	gcc $(C_FLAGS) -c src/asn1/xer_decoder.c -I lib/asn1 -o obj/xer_decoder.o
 
-#OBJ_NAME specifies the name of our exectuable 
-OBJ_NAME = bgdb 
+ber_tlv_tag.o :
+	gcc $(C_FLAGS) -c src/asn1/ber_tlv_tag.c -I lib/asn1 -o obj/ber_tlv_tag.o
 
-#This is the target that compiles our executable 
-all : $(OBJS) 
-		$(CC) $(OBJS) $(COMPILER_FLAGS) $(LINKER_FLAGS) -o $(OBJ_NAME)
+ber_tlv_length.o :
+	gcc $(C_FLAGS) -c src/asn1/ber_tlv_length.c -I lib/asn1 -o obj/ber_tlv_length.o
+
+asn_codecs_prim.o :
+	gcc $(C_FLAGS) -c src/asn1/asn_codecs_prim.c -I lib/asn1 -o obj/asn_codecs_prim.o /bin/OCTET_STRING.o
+
+OCTET_STRING.o :
+	gcc $(C_FLAGS) -c src/asn1/OCTET_STRING.c -I lib/asn1 -o obj/OCTET_STRING.o
+
+VisibleString.o :
+	gcc $(C_FLAGS) -c src/asn1/VisibleString.c -I lib/asn1 -o obj/VisibleString.o
+
+INTEGER.o :
+	gcc $(C_FLAGS) -c src/asn1/INTEGER.c -I lib/asn1 -o obj/INTEGER.o
+
+BoardGame.o :
+	gcc $(C_FLAGS) -c src/asn1/BoardGame.c -I lib/asn1/ -o obj/BoardGame.o
+
+clean :
+	rm -f bin/*
+	rm -f obj/*
