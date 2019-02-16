@@ -1,12 +1,14 @@
 LibraryModule DEFINITIONS AUTOMATIC TAGS ::= 
 BEGIN
+	BoardGames ::= SEQUENCE OF BoardGame
+
 	BoardGame ::= SEQUENCE       
 	{
-		id			INTEGER,                      
-     	name      	VisibleString (SIZE(60)),
-     	description VisibleString(SIZE(60)), 
-		min-players	INTEGER,
-		max-players	INTEGER     
+		id			INTEGER DEFAULT NULL,                      
+     	name      	OCTET STRING (SIZE(1..60)) DEFAULT NULL,
+     	desc		OCTET STRING (SIZE(1..255)) DEFAULT NULL, 
+		min-players	INTEGER DEFAULT NULL,
+		max-players	INTEGER DEFAULT NULL 
   	}                                                     
 END
 

@@ -6,36 +6,10 @@
 
 #include "BoardGame.h"
 
-static int check_permitted_alphabet_3(const void *sptr) {
-	/* The underlying type is VisibleString */
-	const VisibleString_t *st = (const VisibleString_t *)sptr;
-	const uint8_t *ch = st->buf;
-	const uint8_t *end = ch + st->size;
-	
-	for(; ch < end; ch++) {
-		uint8_t cv = *ch;
-		if(!(cv >= 32 && cv <= 126)) return -1;
-	}
-	return 0;
-}
-
-static int check_permitted_alphabet_4(const void *sptr) {
-	/* The underlying type is VisibleString */
-	const VisibleString_t *st = (const VisibleString_t *)sptr;
-	const uint8_t *ch = st->buf;
-	const uint8_t *end = ch + st->size;
-	
-	for(; ch < end; ch++) {
-		uint8_t cv = *ch;
-		if(!(cv >= 32 && cv <= 126)) return -1;
-	}
-	return 0;
-}
-
 static int
 memb_name_constraint_1(asn_TYPE_descriptor_t *td, const void *sptr,
 			asn_app_constraint_failed_f *ctfailcb, void *app_key) {
-	const VisibleString_t *st = (const VisibleString_t *)sptr;
+	const OCTET_STRING_t *st = (const OCTET_STRING_t *)sptr;
 	size_t size;
 	
 	if(!sptr) {
@@ -47,8 +21,7 @@ memb_name_constraint_1(asn_TYPE_descriptor_t *td, const void *sptr,
 	
 	size = st->size;
 	
-	if((size == 60)
-		 && !check_permitted_alphabet_3(st)) {
+	if((size >= 1 && size <= 60)) {
 		/* Constraint check succeeded */
 		return 0;
 	} else {
@@ -60,9 +33,9 @@ memb_name_constraint_1(asn_TYPE_descriptor_t *td, const void *sptr,
 }
 
 static int
-memb_description_constraint_1(asn_TYPE_descriptor_t *td, const void *sptr,
+memb_desc_constraint_1(asn_TYPE_descriptor_t *td, const void *sptr,
 			asn_app_constraint_failed_f *ctfailcb, void *app_key) {
-	const VisibleString_t *st = (const VisibleString_t *)sptr;
+	const OCTET_STRING_t *st = (const OCTET_STRING_t *)sptr;
 	size_t size;
 	
 	if(!sptr) {
@@ -74,8 +47,7 @@ memb_description_constraint_1(asn_TYPE_descriptor_t *td, const void *sptr,
 	
 	size = st->size;
 	
-	if((size == 60)
-		 && !check_permitted_alphabet_4(st)) {
+	if((size >= 1 && size <= 255)) {
 		/* Constraint check succeeded */
 		return 0;
 	} else {
@@ -87,7 +59,7 @@ memb_description_constraint_1(asn_TYPE_descriptor_t *td, const void *sptr,
 }
 
 static asn_TYPE_member_t asn_MBR_BoardGame_1[] = {
-	{ ATF_NOFLAGS, 0, offsetof(struct BoardGame, id),
+	{ ATF_POINTER, 5, offsetof(struct BoardGame, id),
 		(ASN_TAG_CLASS_CONTEXT | (0 << 2)),
 		-1,	/* IMPLICIT tag at current level */
 		&asn_DEF_NativeInteger,
@@ -96,25 +68,25 @@ static asn_TYPE_member_t asn_MBR_BoardGame_1[] = {
 		0,
 		"id"
 		},
-	{ ATF_NOFLAGS, 0, offsetof(struct BoardGame, name),
+	{ ATF_POINTER, 4, offsetof(struct BoardGame, name),
 		(ASN_TAG_CLASS_CONTEXT | (1 << 2)),
 		-1,	/* IMPLICIT tag at current level */
-		&asn_DEF_VisibleString,
+		&asn_DEF_OCTET_STRING,
 		memb_name_constraint_1,
 		0,	/* PER is not compiled, use -gen-PER */
 		0,
 		"name"
 		},
-	{ ATF_NOFLAGS, 0, offsetof(struct BoardGame, description),
+	{ ATF_POINTER, 3, offsetof(struct BoardGame, desc),
 		(ASN_TAG_CLASS_CONTEXT | (2 << 2)),
 		-1,	/* IMPLICIT tag at current level */
-		&asn_DEF_VisibleString,
-		memb_description_constraint_1,
+		&asn_DEF_OCTET_STRING,
+		memb_desc_constraint_1,
 		0,	/* PER is not compiled, use -gen-PER */
 		0,
-		"description"
+		"desc"
 		},
-	{ ATF_NOFLAGS, 0, offsetof(struct BoardGame, min_players),
+	{ ATF_POINTER, 2, offsetof(struct BoardGame, min_players),
 		(ASN_TAG_CLASS_CONTEXT | (3 << 2)),
 		-1,	/* IMPLICIT tag at current level */
 		&asn_DEF_NativeInteger,
@@ -123,7 +95,7 @@ static asn_TYPE_member_t asn_MBR_BoardGame_1[] = {
 		0,
 		"min-players"
 		},
-	{ ATF_NOFLAGS, 0, offsetof(struct BoardGame, max_players),
+	{ ATF_POINTER, 1, offsetof(struct BoardGame, max_players),
 		(ASN_TAG_CLASS_CONTEXT | (4 << 2)),
 		-1,	/* IMPLICIT tag at current level */
 		&asn_DEF_NativeInteger,
@@ -139,7 +111,7 @@ static ber_tlv_tag_t asn_DEF_BoardGame_tags_1[] = {
 static asn_TYPE_tag2member_t asn_MAP_BoardGame_tag2el_1[] = {
     { (ASN_TAG_CLASS_CONTEXT | (0 << 2)), 0, 0, 0 }, /* id */
     { (ASN_TAG_CLASS_CONTEXT | (1 << 2)), 1, 0, 0 }, /* name */
-    { (ASN_TAG_CLASS_CONTEXT | (2 << 2)), 2, 0, 0 }, /* description */
+    { (ASN_TAG_CLASS_CONTEXT | (2 << 2)), 2, 0, 0 }, /* desc */
     { (ASN_TAG_CLASS_CONTEXT | (3 << 2)), 3, 0, 0 }, /* min-players */
     { (ASN_TAG_CLASS_CONTEXT | (4 << 2)), 4, 0, 0 } /* max-players */
 };

@@ -4,7 +4,7 @@
 class TestClass
 {
 	public:
-	void SerializeTest();
+	int SerializeTest();
 };
 
 #endif

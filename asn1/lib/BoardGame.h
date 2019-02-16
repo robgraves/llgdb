@@ -12,7 +12,7 @@
 
 /* Including external dependencies */
 #include <NativeInteger.h>
-#include <VisibleString.h>
+#include <OCTET_STRING.h>
 #include <constr_SEQUENCE.h>
 
 #ifdef __cplusplus
@@ -21,11 +21,11 @@ extern "C" {
 
 /* BoardGame */
 typedef struct BoardGame {
-	long	 id;
-	VisibleString_t	 name;
-	VisibleString_t	 description;
-	long	 min_players;
-	long	 max_players;
+	long	*id	/* DEFAULT NULL */;
+	OCTET_STRING_t	*name	/* DEFAULT NULL */;
+	OCTET_STRING_t	*desc	/* DEFAULT NULL */;
+	long	*min_players	/* DEFAULT NULL */;
+	long	*max_players	/* DEFAULT NULL */;
 	
 	/* Context for parsing across buffer boundaries */
 	asn_struct_ctx_t _asn_ctx;
