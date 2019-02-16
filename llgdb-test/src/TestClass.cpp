@@ -2,7 +2,7 @@
 #include <cstdio>
 #include "TestClass.hpp"
 #include "BoardGame.h"
-//#include "xer_encoder.h"
+#include "xer_encoder.h"
 //#include "xer_decoder.h"
 
 void TestClass::SerializeTest()
@@ -12,4 +12,7 @@ void TestClass::SerializeTest()
 	OCTET_STRING_fromString(&(bg.description), "A Wild West-themed social deduction card game.");
 	bg.min_players = 4;
 	bg.max_players = 7;
+	FILE *fp = fopen("serialize.dat", "w");
+	xer_fprint(fp, &asn_DEF_BoardGame, &bg);
+	fclose(fp);
 }
