@@ -3,7 +3,7 @@
 #include <serialize.h>
 
 
-int InitBuffer(Buffer *buffer)
+void InitBuffer(Buffer *buffer)
 {
 	buffer->data = NULL;
 	buffer->index = 0;
