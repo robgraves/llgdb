@@ -2,30 +2,49 @@
 #include <cstdio>
 #include <unistd.h>
 #include <limits.h>
-#include "TestClass.hpp"
-#include "BoardGame.h"
-#include "xer_encoder.h"
-//#include "xer_decoder.h"
+extern "C" {
+	#include "BoardGame.h"
+	#include "BoardGames.h"
+	#include "xer_encoder.h"
+	#include "llgdbBoardGame.h"
+	#include "llgdbBoardGamesSeq.h"
+	#include "TestClass.hpp"
+}
 
 int TestClass::SerializeTest()
 {
 	//Initialize BoardGame_t
-	BoardGame_t *bg = new BoardGame_t;
-	bg->id = new long;
-	bg->max_players = new long;
-	bg->min_players = new long;
-	bg->name = new OCTET_STRING_t;
-	bg->desc = new OCTET_STRING_t;
-	*(bg->id) = 1;
-	*(bg->max_players) = 7;
-	*(bg->min_players) = 4;
-	char desc[] = "A Wild West-themed social deduction card game.";
-	OCTET_STRING_fromBuf(bg->name, "Bang!", -1); 
-	OCTET_STRING_fromBuf(bg->desc, desc, -1); 
-	
+	BoardGame_t *bg = NULL;
+	long id = 1, min_players = 4, max_players = 7;
+	char name[] = "Bang!", desc[] = "A Wild West-themed social deduction card game.";
+	InitBoardGame(&bg, &id, name, desc, &min_players, &max_players);	
+
 	//Encode BoardGame_t to file
 	FILE *fp = fopen("serialize.dat", "w");
 	xer_fprint(fp, &asn_DEF_BoardGame, bg);
-	fclose(fp);
+	fclose(fp); fp = NULL;
+	FreeBoardGame(&bg);
+	return 0;
+}
+
+int TestClass::SerializeListTest()
+{
+	long id = 1, min_players = 4, max_players = 7;
+	char name[] = "Bang!", desc[] = "A Wild West-themed social deduction card game.";
+	//Initialize BoardGames_t (sequence of board games)
+	BoardGames_t *bgs = NULL;
+	InitBoardGamesSeq(&bgs);
+	for(int i=0; i<100; i++){
+		BoardGame_t *bg = NULL;
+		InitBoardGame(&bg, &id, name, desc, &min_players, &max_players);
+		AddBoardGameToSeq(bgs, bg);
+		if( i == 5 ){ DelBoardGameFromSeq(bgs, bg); }
+		id++;
+	}
+	//Encode BoardGame_t to file
+	FILE *fp = fopen("serialize.dat", "w");
+	xer_fprint(fp, &asn_DEF_BoardGames, bgs);
+	fclose(fp); fp = NULL;
+	FreeBoardGamesSeq(&bgs);
 	return 0;
 }

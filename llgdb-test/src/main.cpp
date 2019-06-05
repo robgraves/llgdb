@@ -7,5 +7,6 @@ int main(int argc, char** argv)
 
 	TestClass *tc = new TestClass();	
 	tc->SerializeTest();
+	tc->SerializeListTest();
 	free(tc);
 }

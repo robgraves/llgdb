@@ -5,6 +5,7 @@ class TestClass
 {
 	public:
 	int SerializeTest();
+	int SerializeListTest();
 };
 
 #endif
